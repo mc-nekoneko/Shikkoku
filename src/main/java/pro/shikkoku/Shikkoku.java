@@ -38,6 +38,9 @@ public final class Shikkoku extends JavaPlugin {
             return true;
         }
         Player player = (Player) sender;
+        if (!player.hasPermission("shikkoku.namechange")) {
+            return true;
+        }
         if (command.getName().equalsIgnoreCase("namechange")) {
             String changes = args[0];
             nameStore.setName(player, changes, true);

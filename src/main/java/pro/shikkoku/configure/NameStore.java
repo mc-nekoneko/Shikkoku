@@ -35,8 +35,10 @@ public class NameStore extends JsonConfiguration {
         if (put) {
             data.getNames().put(player.getUniqueId(), name);
         }
+        String change = player.getDisplayName();
         player.setDisplayName(name);
-        player.setPlayerListName(player.getPlayerListName().replaceAll(player.getDisplayName(), name));
+        player.setCustomName(name);
+        player.setPlayerListName(player.getPlayerListName().replaceFirst(change, name));
     }
 
     public String getName(Player player) {
@@ -53,7 +55,7 @@ public class NameStore extends JsonConfiguration {
         }
 
         private Optional<String> get(UUID uuid) {
-            if (names.containsKey(uuid)) {
+            if (!names.containsKey(uuid)) {
                 return Optional.empty();
             }
             return Optional.ofNullable(names.get(uuid));

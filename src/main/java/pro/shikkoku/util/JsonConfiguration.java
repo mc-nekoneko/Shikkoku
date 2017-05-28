@@ -46,7 +46,7 @@ public class JsonConfiguration {
                 if (!file.createNewFile()) {
                     return false;
                 }
-                save("{}");
+                save(new Object());
             }
 
             return true;
