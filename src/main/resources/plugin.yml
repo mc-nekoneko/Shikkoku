@@ -1,0 +1,8 @@
+name: Shikkoku
+version: ${project.version}
+main: pro.shikkoku.Shikkoku
+commands:
+  namechange:
+permissions:
+  shikkoku.namechange:
+    default: false
