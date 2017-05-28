@@ -1,8 +1,10 @@
 name: Shikkoku
 version: ${project.version}
 main: pro.shikkoku.Shikkoku
+depend: [ProtocolLib]
 commands:
   namechange:
+  resetname:
 permissions:
   shikkoku.namechange:
     default: false

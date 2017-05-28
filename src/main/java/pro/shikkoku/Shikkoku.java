@@ -1,5 +1,6 @@
 package pro.shikkoku;
 
+import com.comphenix.protocol.ProtocolLibrary;
 import lombok.Getter;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -9,6 +10,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import pro.shikkoku.configure.NameStore;
 import pro.shikkoku.listener.PlayerListener;
 import pro.shikkoku.listener.ProtectListener;
+import pro.shikkoku.listener.ProtocolListener;
 
 public final class Shikkoku extends JavaPlugin {
 
@@ -24,6 +26,7 @@ public final class Shikkoku extends JavaPlugin {
         nameStore.load();
         pluginManager.registerEvents(new PlayerListener(this), this);
         pluginManager.registerEvents(new ProtectListener(this), this);
+        //ProtocolLibrary.getProtocolManager().addPacketListener(new ProtocolListener(this));
     }
 
     @Override
@@ -45,6 +48,10 @@ public final class Shikkoku extends JavaPlugin {
             String changes = args[0];
             nameStore.setName(player, changes, true);
             player.sendMessage("Changed DisplayName: " + changes);
+        }
+        if (command.getName().equalsIgnoreCase("resetname")) {
+            nameStore.setName(player, player.getName(), true);
+            player.sendMessage("ResetName");
         }
         return true;
     }
