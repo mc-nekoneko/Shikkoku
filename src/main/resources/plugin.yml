@@ -5,6 +5,7 @@ depend: [ProtocolLib]
 commands:
   namechange:
   resetname:
+  playerdataremover:
 permissions:
   shikkoku.namechange:
     default: false
